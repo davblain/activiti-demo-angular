@@ -1,0 +1,14 @@
+.btn {
+  margin-left: 0.5rem;
+}
+@media(max-width: 768px) {
+  .collapse {
+    opacity: 0;
+    display: none
+  }
+}
+.welcome{
+  padding-right: 0.5rem;
+  padding-left: 1rem;
+}
+

@@ -1,0 +1,40 @@
+<clr-main-container>
+  <clr-header class="header-6">
+    <div class="branding">
+      <a routerLink="" class="nav-link">
+        <clr-icon shape="envelope" class="is-solid"></clr-icon>
+        <span class="title">T-Mail App</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <a  href="javascript://" (click)="logout()" class="nav-link nav-icon">
+        <clr-icon shape="logout"></clr-icon>
+      </a>
+    </div>
+  </clr-header>
+  <div class="content-container">
+    <clr-vertical-nav  class="collapse">
+      <h2 class="welcome" align="center">Hi, {{username}}</h2>
+      <button class="btn btn-primary" (click)="openedModal=true">
+        <clr-icon shape="add"></clr-icon>
+        Create
+      </button>
+      <a clrVerticalNavLink routerLink="/tasks" [queryParams]="{filter: 'all'}" routerLinkActive="active">All Tasks</a>
+      <a clrVerticalNavLink routerLink="/tasks" [queryParams]="{filter: 'current'}" routerLinkActive="active">Current Tasks</a>
+      <a clrVerticalNavLink routerLink="/tasks" [queryParams]="{filter: 'created-by-user'}" routerLinkActive="active">Task created by you</a>
+      <a clrVerticalNavLink routerLink="/tasks" [queryParams]="{filter: 'completed'}" routerLinkActive="active"> Completed Tasks</a>
+      <a clrVerticalNavLink routerLink="/tasks" [queryParams]="{filter: 'closed'}" routerLinkActive="active"> Closed Tasks</a>
+      <a clrVerticalNavLink routerLink="/tasks" [queryParams]="{filter: 'expired'}" routerLinkActive="active"> Expired Tasks</a>
+    </clr-vertical-nav>
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+<clr-modal [(clrModalOpen)]="openedModal">
+  <h3 class="modal-title"> Add new task</h3>
+  <div class="modal-body">
+    <app-create-task (formSubmitted)="openedModal=false"></app-create-task>
+  </div>
+</clr-modal>
+</clr-main-container>
+

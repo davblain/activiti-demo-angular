@@ -1,0 +1,44 @@
+<form [formGroup]="createTaskForm" (ngSubmit)="createTask(createTaskForm.value)">
+  <section class="form-block">
+    <div class="form-group">
+    <label for="recipient"> Recipient</label>
+    <label for="recipient" aria-haspopup="true"
+           role="tooltip"
+           class="tooltip tooltip-validation tooltip-sm"
+           [class.invalid]="createTaskForm.get('recipient').invalid
+                        && (createTaskForm.get('recipient').dirty ||
+                        createTaskForm.get('recipient').touched)||!valid">
+      <span class="tooltip-content">Recipient is required.</span>
+    </label>
+      <input type="text" id="recipient" #recipient (change)="onChange(recipient.value)" placeholder="Enter recipients name" formControlName="recipient" size="35">
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <label for="title" aria-haspopup="true"
+             role="tooltip"
+             class="tooltip tooltip-validation tooltip-sm"
+             [class.invalid]="createTaskForm.get('title').invalid
+                        && (createTaskForm.get('title').dirty ||
+                        createTaskForm.get('title').touched)">
+        <span class="tooltip-content">Tittle is required</span>
+      </label>
+      <input type="text" id="title" placeholder="Enter title of Task" size="35" formControlName="title">
+    </div>
+    <div class="form-group">
+      <label for="title">Description</label>
+      <label for="title" aria-haspopup="true"
+             role="tooltip"
+             class="tooltip tooltip-validation tooltip-sm"
+             [class.invalid]="createTaskForm.get('description').invalid
+                        && (createTaskForm.get('description').dirty ||
+                        createTaskForm.get('description').touched)">
+        <span class="tooltip-content">Description is required</span>
+      </label>
+      <textarea id="description" rows="3" class="form-control" formControlName="description"></textarea>
+    </div>
+    <h5>Time for task:</h5>
+    <app-dur-pick [duration]="_duration" (durationChange)="onDurationChange($event)"></app-dur-pick>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!createTaskForm.valid||!valid">Send Task</button>
+  </section>
+</form>

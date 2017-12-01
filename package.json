@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
@@ -13,17 +13,27 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^5.0.0",
+    "@angular/cdk": "^5.0.0-rc0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
     "@angular/core": "^5.0.0",
     "@angular/forms": "^5.0.0",
     "@angular/http": "^5.0.0",
+    "@angular/material": "^5.0.0-rc0",
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "@webcomponents/custom-elements": "^1.0.0",
+    "angular2-time-duration-picker": "^1.1.0",
+    "clarity-angular": "^0.10.13",
+    "clarity-icons": "^0.10.13",
+    "clarity-ui": "^0.10.13",
     "core-js": "^2.4.1",
+    "durational": "^1.1.0",
+    "ngx-pagination": "^3.0.3",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
+
   },
   "devDependencies": {
     "@angular/cli": "1.5.0",

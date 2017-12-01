@@ -1,0 +1,15 @@
+<div class="row">
+
+  <div class="col-lg-4">
+    <label for="hours">Hours</label>
+    <input type="number" id="hours" placeholder="Hours" [ngModel]="_duration.hours" (ngModelChange)="hoursChange($event)">
+  </div>
+  <div class="col-lg-4">
+    <label for="minutes">Minutes</label>
+    <input type="number" id="minutes" placeholder="Minutes" [ngModel]="_duration.minutes" (ngModelChange)="minutesChange($event)">
+  </div>
+  <div class="col-lg-4">
+    <label for="seconds">Seconds</label>
+    <input type="number" id="seconds" placeholder="Seconds" [(ngModel)]="_duration.seconds" (ngModelChange)="secondsChange($event)">
+  </div>
+</div>

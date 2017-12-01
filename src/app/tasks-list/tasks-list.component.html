@@ -1,0 +1,21 @@
+<h2> {{filter| name}} Tasks</h2>
+<clr-datagrid>
+  <clr-dg-column>Creator</clr-dg-column>
+  <clr-dg-column>Sender</clr-dg-column>
+  <clr-dg-column>Creation time</clr-dg-column>
+  <clr-dg-column>Delegation time</clr-dg-column>
+  <clr-dg-column>Title</clr-dg-column>
+  <clr-dg-column>Status</clr-dg-column>
+
+    <clr-dg-row *ngFor="let task of page?.content | paginate: { itemsPerPage: 10, currentPage: page?.number,totalItems: page?.totalElements, id: 'pag'} " (click)="open($event,task)" style="cursor: hand;cursor: pointer;">
+      <clr-dg-cell> {{task.creator}}</clr-dg-cell>
+      <clr-dg-cell>{{task.sender}}</clr-dg-cell>
+      <clr-dg-cell>{{task.created|date:'short'}}</clr-dg-cell>
+      <clr-dg-cell>{{task.received|date: 'short'}}</clr-dg-cell>
+      <clr-dg-cell>{{task.title}}</clr-dg-cell>
+      <clr-dg-cell>{{task.status}}</clr-dg-cell>
+    </clr-dg-row>
+  <clr-dg-footer>
+    <pagination-controls id="pag" [maxSize]="10" [directionLinks]="true" (pageChange)="pageChange($event)"></pagination-controls>
+  </clr-dg-footer>
+</clr-datagrid>

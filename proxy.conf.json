@@ -1,0 +1,11 @@
+
+{
+  "/logout": {
+    "target": "http://localhost:8090/",
+    "secure": false
+  },
+  "/api": {
+    "target": "http://localhost:8090/",
+    "secure": false
+  }
+}

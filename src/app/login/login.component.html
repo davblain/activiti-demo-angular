@@ -1,0 +1,17 @@
+<div class="login-wrapper">
+  <form class="login">
+    <label class="title">
+      <h3 class="welcome">Welcome to</h3>
+      TMail
+    </label>
+    <div class="login-group">
+      <input class="username" name="log" [(ngModel)]="login" id="login_username" placeholder="Username">
+      <input class="password" name="pass" type="password" [(ngModel)]="password" id="login_password" placeholder="Password" [ngModelOptions]="{standalone: true}">
+      <div class="error active" *ngIf="error">
+        Invalid user name or password
+      </div>
+      <button   class="btn btn-primary" (click)="onClick($event);
+      $event.stopPropagation();">NEXT</button>
+    </div>
+  </form>
+</div>

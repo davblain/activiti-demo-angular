@@ -1,0 +1,82 @@
+<div *ngIf="taskDetail != null">
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+      <div class="card-header">
+        {{taskDetail?.startTime|date}}
+        State: {{taskDetail.state}}
+      </div>
+      <div class="card-block">
+        <div class="card-text">
+          <h3>Title: {{taskDetail?.title}}</h3>
+          <div class="form-group">
+            <label for="details"> Description</label>
+            <textarea id="details" [(ngModel)]="taskDetail.description" [disabled]="!canEditDescription()" > </textarea>
+          </div>
+          <button  *ngIf="canEditDescription()" name="editDetails" (click)="changeDescription()" class="btn btn-primary">Edit</button>
+           Time For Task : {{taskDetail.curDuration|dur}}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6 col-md-12">
+    <div class="card">
+      <div class="card-header">
+        Actions
+      </div>
+      <div class="card-block">
+        <div class="card-text datagrid-scroll-wrapper">
+          <div class="row">
+          <span *ngFor=" let action of taskDetail?.actions">
+            <span class="label">{{action.time|date:'medium'}}</span>
+            {{action|actionMessage}}
+          </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="stepAvailableActions.length!==0" class="col-lg-6 col-md-12">
+    <div class="card">
+      <div class="card-header">Do Action</div>
+      <div class="card-block">
+        <div class="card-text">
+          <form [formGroup]="doActionForm" (ngSubmit)="onSubmit(doActionForm.value)">
+            <section class="form-block">
+              <div class="form-group row">
+                <div class=" col-lg-4">
+                  <label for="selectAction">Select Action</label>
+                </div>
+                <div class="col-lg-4">
+                  <div class="select form-control">
+                    <select name="selectAction" id="selectAction"   [(ngModel)] = selectedAction  [ngModelOptions]="{standalone: true}">
+                      <option *ngFor="let action of stepAvailableActions" [ngValue]="action">{{action.actionType}}</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div [formGroup]="doActionForm.get('data')" class="form-group row" *ngFor="let property of selectedAction?.properties">
+                <div class="col-lg-6">
+                  <label for="{{property}}">{{property}}</label>
+                </div>
+                <div class="col-lg-6">
+
+                  <input type="text" id={{property}} placeholder= {{property}} formControlName="{{property}}">
+                </div>
+              </div>
+              <div *ngIf=err>
+                {{errMessage}}
+              </div>
+              <div class="col-lg-4">
+                <button type="submit" class="btn btn-primary">Do</button>
+              </div>
+            </section>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
